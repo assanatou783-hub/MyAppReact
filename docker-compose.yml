@@ -1,13 +1,11 @@
 services:
   mongodb:
     image: mongo
-    container_name: mongodb
     networks:
       - mern-network
 
   server:
     build: ./Server
-    container_name: server
     ports:
       - "9000:9000"
     depends_on:
@@ -19,7 +17,6 @@ services:
 
   client:
     build: ./Client
-    container_name: client
     ports:
       - "3000:3000"
     depends_on:
@@ -29,5 +26,4 @@ services:
 
 networks:
   mern-network:
-    name: mern-network
     driver: bridge
